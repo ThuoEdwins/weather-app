@@ -1,4 +1,4 @@
-const apiKey = "GET API FROM https://home.openweathermap.org/api_keys";
+const apiKey = "c0169abcb701112dd9c725ec1942764c";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
 
 const locationInput = document.getElementById("locationInput");
@@ -24,27 +24,30 @@ function fetchWeather(location) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-   
-      locationElement.textContent = data.name + ", " + data.sys.country;
+    //   locationElement.textContent = data.name;
+    //   countryElement.textContent = data.sys.country;
+        locationElement.textContent = data.name + ", " + data.sys.country;
+
       temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
       descriptionElement.textContent = data.weather[0].description + ' with ';
 
-        if (data.wind.speed >= 0 && data.wind.speed < 2) {
-            windElement.textContent = "Calm wind";
-        } else if (data.wind.speed >= 2 && data.wind.speed < 4) {
-            windElement.textContent = "Light wind";
-        } else if (data.wind.speed >= 4 && data.wind.speed < 6) {
-            windElement.textContent = "Moderate wind";
-        } else if (data.wind.speed >= 6 && data.wind.speed < 8) {
-            windElement.textContent = "Slight strong wind";
-        } else if (data.wind.speed >= 8 && data.wind.speed < 10) {
-            windElement.textContent = "Strong wuind";
-        } else if (data.wind.speed >= 10) {
-            windElement.textContent = "Storm and hurricanes";
-        } else {
-            windElement.textContent = "Unknown"; // Handle unexpected wind speed values
-        }
-       
+if (data.wind.speed >= 0 && data.wind.speed < 2) {
+    windElement.textContent = "Calm wind";
+} else if (data.wind.speed >= 2 && data.wind.speed < 4) {
+    windElement.textContent = "Light wind";
+} else if (data.wind.speed >= 4 && data.wind.speed < 6) {
+    windElement.textContent = "Moderate wind";
+} else if (data.wind.speed >= 6 && data.wind.speed < 8) {
+    windElement.textContent = "Slight strong wind";
+} else if (data.wind.speed >= 8 && data.wind.speed < 10) {
+    windElement.textContent = "Strong";
+} else if (data.wind.speed >= 10) {
+    windElement.textContent = "Storm";
+} else {
+    windElement.textContent = "Unknown"; // Handle unexpected wind speed values
+}
+ 
+      
     })
     .catch((error) => {
       console.error("Error fetching weather data:", error);
