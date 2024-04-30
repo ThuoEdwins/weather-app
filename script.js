@@ -6,11 +6,14 @@ const searchButton = document.getElementById("searchButton");
 const locationElement = document.getElementById("location");
 const temperatureElement = document.getElementById("temperature");
 const descriptionElement = document.getElementById("description");
+const countryElement = document.getElementById("country");
 
 searchButton.addEventListener("click", () => {
   const location = locationInput.value;
   if (location) {
     fetchWeather(location);
+  }else{
+    alert('Please enter a location!')
   }
 });
 
@@ -21,6 +24,7 @@ function fetchWeather(location) {
     .then((response) => response.json())
     .then((data) => {
       locationElement.textContent = data.name;
+      countryElement.textContent = data.sys.country;
       temperatureElement.textContent = `${Math.round(data.main.temp)}°C`;
       descriptionElement.textContent = data.weather[0].description;
     })
