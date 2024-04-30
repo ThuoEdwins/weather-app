@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -57,9 +57,13 @@ button:hover {
     font-weight: bold;
 }
 
-#description {
+#description{
     margin-top: 10px;
     font-size: 18px;
+    color: #666;
+}
+#wind{
+    margin-top: 0px;
     color: #666;
 }
 #country{
